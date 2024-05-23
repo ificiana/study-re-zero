@@ -67,6 +67,12 @@
             header {
                 text-align: center;
             }
+
+            #loader {
+                position: fixed;
+                top: 50vh;
+                left: 50vw;
+            }
         </style>
         <link
             rel="stylesheet"
@@ -113,6 +119,7 @@
 
             <button type="button" id="toggleTOC">Toggle TOC</button>
         </header>
+        <div aria-busy="true" aria-label="Please wait…" id="loader" class="fluid-container hidden"></div>
         <main class="container">
             <div id="toc"></div>
             <div id="content"></div>
