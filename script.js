@@ -26,15 +26,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
   document.getElementById("exportData").addEventListener("click", function () {
     let studiedData = JSON.parse(localStorage.getItem("studiedData")) || {};
-    const dataStr =
-      "data:text/json;charset=utf-8," +
-      encodeURIComponent(JSON.stringify(studiedData));
-    const downloadAnchorNode = document.createElement("a");
-    downloadAnchorNode.setAttribute("href", dataStr);
-    downloadAnchorNode.setAttribute("download", "studied.json");
-    document.body.appendChild(downloadAnchorNode); // required for firefox
-    downloadAnchorNode.click();
-    downloadAnchorNode.remove();
+    const dataStr = JSON.stringify(studiedData, null, 2);
+    const blob = new Blob([dataStr], { type: "application/json" });
+    saveAs(blob, "studied.json");
   });
 
   function createContent(wordsData, studiedData, kanjiFilter) {

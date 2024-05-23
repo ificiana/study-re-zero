@@ -60,6 +60,12 @@
         display: none;
       }
     </style>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.0/FileSaver.min.js"
+      integrity="sha512-csNcFYJniKjJxRWRV1R7fvnXrycHP6qDR21mgz1ZP55xY5d+aHLfo9/FcGDQLfn2IfngbAHd8LdfsagcCqgTcQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
     <script src="words.min.js"></script>
     <script>
       window.addEventListener("DOMContentLoaded", (event) => {
@@ -81,7 +87,13 @@
   <body>
     <button type="button" id="loadData">Load Data to localStorage</button>
     <button type="button" id="exportData">Export Studied Data</button>
-    <input type="file" id="fileInput" aria-label="file" class="hidden" />
+    <input
+      type="file"
+      id="fileInput"
+      aria-label="file"
+      class="hidden"
+      accept=".json"
+    />
     <a href="studied.html">Go to Studied Page</a>
 
     <button type="button" id="toggleTOC">Toggle TOC</button>
