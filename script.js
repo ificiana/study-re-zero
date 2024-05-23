@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         const ul = document.createElement('ul');
 
-        if (!kanjiFilter || kanjiFilter === kanji) {
+        if (kanji) {
             wordsData[kanji].forEach(word => {
                 if (!studiedData[kanji] || !studiedData[kanji].includes(word)) {
                     const li = document.createElement('li');
