@@ -6,9 +6,22 @@ document.addEventListener('DOMContentLoaded', function() {
     createContent(wordsData, studiedData, kanjiFilter);
 
     document.getElementById('loadData').addEventListener('click', function() {
-        localStorage.setItem('wordsData', JSON.stringify(wordsData));
+    document.getElementById('fileInput').click();
+});
+
+document.getElementById('fileInput').addEventListener('change', function(event) {
+    const file = event.target.files[0];
+    const reader = new FileReader();
+
+    reader.onload = function() {
+        const jsonData = JSON.parse(reader.result);
+        localStorage.setItem('studiedData', JSON.stringify(jsonData));
         alert('Data loaded to localStorage');
-    });
+    };
+
+    reader.readAsText(file);
+});
+
 
     document.getElementById('exportData').addEventListener('click', function() {
         let studiedData = JSON.parse(localStorage.getItem('studiedData')) || {};
