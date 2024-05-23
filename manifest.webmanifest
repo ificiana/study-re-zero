@@ -1,7 +1,7 @@
 {
   "name": "Re:Zero Study",
   "short_name": "Re:Z-S",
-  "start_url": "/",
+  "start_url": "/study-re-zero/",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#000000",
