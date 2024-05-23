@@ -3,8 +3,8 @@
     "short_name": "Re:Zero Study",
     "start_url": "/study-re-zero/",
     "display": "standalone",
-    "background_color": "#ffffff",
-    "theme_color": "#000000",
+    "background_color": "#13171f",
+    "theme_color": "#c2c7d0",
     "screenshots": [
         {
             "src": "header-logo.png",

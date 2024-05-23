@@ -47,19 +47,28 @@
             }
 
             .kanji-section ul {
-                list-style-type: none;
                 padding: 0;
             }
 
             .kanji-section li {
                 margin-bottom: 5px;
             }
+
+            header {
+                text-align: center;
+            }
         </style>
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.indigo.min.css"
+        />
     </head>
 
     <body>
-        <a href="index.html">Go to the Study Page</a>
-        <div id="content"></div>
+        <header class="grid">
+            <a href="index.html">Go to the Study Page</a>
+        </header>
+        <main class="container"><div id="content"></div></main>
 
         <script>
             document.addEventListener("DOMContentLoaded", function () {
