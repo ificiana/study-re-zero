@@ -1,7 +1,9 @@
 const CACHE_NAME = 'rzs-v1';
 const urlsToCache = [
-  '/script.js',
-  '/words.js'
+  'index.html',
+  'studied.html',
+  'script.js',
+  'words.js',
 ];
 
 self.addEventListener('install', event => {
