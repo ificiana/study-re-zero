@@ -1,9 +1,10 @@
-const CACHE_NAME = 'rzs-v1';
+const VERSION = 1;
+const CACHE_NAME = `rzs-v${VERSION}`;
 const urlsToCache = [
   'index.html',
   'studied.html',
   'script.js',
-  'words.js',
+  'words.min.js',
 ];
 
 self.addEventListener('install', event => {
