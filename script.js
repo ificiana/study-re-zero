@@ -29,34 +29,36 @@ document.addEventListener('DOMContentLoaded', function() {
             const tocEntry = document.createElement('div');
             tocEntry.innerHTML = `<a href="?k=${kanji}#${kanji}">${kanji}</a>`;
             toc.appendChild(tocEntry);
-
-            const kanjiSection = document.createElement('div');
-            kanjiSection.classList.add('kanji-section');
-            kanjiSection.id = kanji;
-
-            const h1 = document.createElement('h1');
-            h1.textContent = kanji;
-            kanjiSection.appendChild(h1);
-
-            const ul = document.createElement('ul');
-
-            if (!kanjiFilter || kanjiFilter === kanji) {
-                wordsData[kanji].forEach(word => {
-                    if (!studiedData[kanji] || !studiedData[kanji].includes(word)) {
-                        const li = document.createElement('li');
-                        const checkbox = document.createElement('input');
-                        checkbox.type = 'checkbox';
-                        checkbox.addEventListener('click', () => handleCheckboxClick(kanji, word));
-                        li.appendChild(checkbox);
-                        li.appendChild(document.createTextNode(` ${word}`));
-                        ul.appendChild(li);
-                    }
-                });
-
-                kanjiSection.appendChild(ul);
-                content.appendChild(kanjiSection);
-            }
         });
+
+        const kanji = kanjiFilter;
+
+        const kanjiSection = document.createElement('div');
+        kanjiSection.classList.add('kanji-section');
+        kanjiSection.id = kanji;
+
+        const h1 = document.createElement('h1');
+        h1.textContent = kanji;
+        kanjiSection.appendChild(h1);
+
+        const ul = document.createElement('ul');
+
+        if (!kanjiFilter || kanjiFilter === kanji) {
+            wordsData[kanji].forEach(word => {
+                if (!studiedData[kanji] || !studiedData[kanji].includes(word)) {
+                    const li = document.createElement('li');
+                    const checkbox = document.createElement('input');
+                    checkbox.type = 'checkbox';
+                    checkbox.addEventListener('click', () => handleCheckboxClick(kanji, word));
+                    li.appendChild(checkbox);
+                    li.appendChild(document.createTextNode(` ${word}`));
+                    ul.appendChild(li);
+                }
+            });
+
+            kanjiSection.appendChild(ul);
+            content.appendChild(kanjiSection);
+        }
     }
 
     function handleCheckboxClick(kanji, word) {
