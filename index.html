@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kanji Words</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+
+        #toc {
+            margin-bottom: 20px;
+        }
+
+        .kanji-section {
+            margin-bottom: 20px;
+        }
+
+        .kanji-section h1 {
+            font-size: 24px;
+        }
+
+        .kanji-section ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .kanji-section li {
+            margin-bottom: 5px;
+        }
+
+        button {
+            margin: 5px;
+        }
+    </style>
+    <script src="words.js"></script>
+</head>
+
+<body>
+    <button type="button" id="loadData">Load Data to localStorage</button>
+    <button type="button" id="exportData">Export Studied Data</button>
+    <a href="studied.html">Go to Studied Page</a>
+    
+    <div id="toc"></div>
+    <div id="content"></div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
