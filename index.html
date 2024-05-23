@@ -1,105 +1,110 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Kanji Words</title>
-    <link rel="icon" type="image/x-icon" href="favicon.ico" />
-    <link rel="manifest" href="manifest.webmanifest" />
-    <link rel="apple-touch-icon" href="icon.png" />
-    <meta name="robots" content="noindex" />
-    <meta
-      name="description"
-      content="A quickly put together project to help me list and study the words/kanji from Re:Zero LN"
-    />
-    <script>
-      if ("serviceWorker" in navigator) {
-        window.addEventListener("load", () => {
-          navigator.serviceWorker
-            .register("service-worker.js")
-            .then((registration) => console.log("Service Worker registered"))
-            .catch((error) =>
-              console.error("Service Worker registration failed:", error),
-            );
-        });
-      }
-    </script>
-    <style>
-      body {
-        font-family: Arial, sans-serif;
-        margin: 0;
-        padding: 20px;
-      }
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Kanji Words</title>
+        <link rel="icon" type="image/x-icon" href="favicon.ico" />
+        <link rel="manifest" href="manifest.webmanifest" />
+        <link rel="apple-touch-icon" href="icon.png" />
+        <meta name="robots" content="noindex" />
+        <meta
+            name="description"
+            content="A quickly put together project to help me list and study the words/kanji from Re:Zero LN"
+        />
+        <script>
+            if ("serviceWorker" in navigator) {
+                window.addEventListener("load", () => {
+                    navigator.serviceWorker
+                        .register("service-worker.js")
+                        .then((registration) =>
+                            console.log("Service Worker registered"),
+                        )
+                        .catch((error) =>
+                            console.error(
+                                "Service Worker registration failed:",
+                                error,
+                            ),
+                        );
+                });
+            }
+        </script>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                margin: 0;
+                padding: 20px;
+            }
 
-      #toc {
-        margin-bottom: 20px;
-      }
+            #toc {
+                margin-bottom: 20px;
+            }
 
-      .kanji-section {
-        margin-bottom: 20px;
-      }
+            .kanji-section {
+                margin-bottom: 20px;
+            }
 
-      .kanji-section h1 {
-        font-size: 24px;
-      }
+            .kanji-section h1 {
+                font-size: 24px;
+            }
 
-      .kanji-section ul {
-        list-style-type: none;
-        padding: 0;
-      }
+            .kanji-section ul {
+                list-style-type: none;
+                padding: 0;
+            }
 
-      .kanji-section li {
-        margin-bottom: 5px;
-      }
+            .kanji-section li {
+                margin-bottom: 5px;
+            }
 
-      button {
-        margin: 5px;
-      }
+            button {
+                margin: 5px;
+            }
 
-      .hidden {
-        display: none;
-      }
-    </style>
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.0/FileSaver.min.js"
-      integrity="sha512-csNcFYJniKjJxRWRV1R7fvnXrycHP6qDR21mgz1ZP55xY5d+aHLfo9/FcGDQLfn2IfngbAHd8LdfsagcCqgTcQ=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    ></script>
-    <script src="words.min.js"></script>
-    <script>
-      window.addEventListener("DOMContentLoaded", (event) => {
-        const urlParams = new URLSearchParams(window.location.search);
-        const kParam = urlParams.get("k");
-        const toc = document.getElementById("toc");
-        if (kParam) {
-          toc.classList.add("hidden");
-        }
-        function toggleTOC() {
-          toc.classList.toggle("hidden");
-        }
-        const tocButton = document.getElementById("toggleTOC");
-        tocButton.addEventListener("click", toggleTOC);
-      });
-    </script>
-  </head>
+            .hidden {
+                display: none;
+            }
+        </style>
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.0/FileSaver.min.js"
+            integrity="sha512-csNcFYJniKjJxRWRV1R7fvnXrycHP6qDR21mgz1ZP55xY5d+aHLfo9/FcGDQLfn2IfngbAHd8LdfsagcCqgTcQ=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+        ></script>
+        <script src="words.min.js"></script>
+        <script>
+            window.addEventListener("DOMContentLoaded", (event) => {
+                const urlParams = new URLSearchParams(window.location.search);
+                const kParam = urlParams.get("k");
+                const toc = document.getElementById("toc");
+                if (kParam) {
+                    toc.classList.add("hidden");
+                }
+                function toggleTOC() {
+                    toc.classList.toggle("hidden");
+                }
+                const tocButton = document.getElementById("toggleTOC");
+                tocButton.addEventListener("click", toggleTOC);
+            });
+        </script>
+    </head>
 
-  <body>
-    <button type="button" id="loadData">Load Data to localStorage</button>
-    <button type="button" id="exportData">Export Studied Data</button>
-    <input
-      type="file"
-      id="fileInput"
-      aria-label="file"
-      class="hidden"
-      accept=".json"
-    />
-    <a href="studied.html">Go to Studied Page</a>
+    <body>
+        <button type="button" id="loadData">Load Data to localStorage</button>
+        <button type="button" id="exportData">Export Studied Data</button>
+        <input
+            type="file"
+            id="fileInput"
+            aria-label="file"
+            class="hidden"
+            accept=".json"
+        />
+        <a href="studied.html">Go to Studied Page</a>
 
-    <button type="button" id="toggleTOC">Toggle TOC</button>
-    <div id="toc"></div>
-    <div id="content"></div>
+        <button type="button" id="toggleTOC">Toggle TOC</button>
+        <div id="toc"></div>
+        <div id="content"></div>
 
-    <script src="script.js"></script>
-  </body>
+        <script src="script.js"></script>
+    </body>
 </html>

@@ -1,114 +1,124 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Studied Kanji Words</title>
-    <link rel="icon" type="image/x-icon" href="favicon.ico" />
-    <link rel="manifest" href="manifest.webmanifest" />
-    <link rel="apple-touch-icon" href="icon.png" />
-    <meta name="robots" content="noindex" />
-    <meta
-      name="description"
-      content="A quickly put together project to help me list and study the words/kanji from Re:Zero LN"
-    />
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Studied Kanji Words</title>
+        <link rel="icon" type="image/x-icon" href="favicon.ico" />
+        <link rel="manifest" href="manifest.webmanifest" />
+        <link rel="apple-touch-icon" href="icon.png" />
+        <meta name="robots" content="noindex" />
+        <meta
+            name="description"
+            content="A quickly put together project to help me list and study the words/kanji from Re:Zero LN"
+        />
 
-    <script>
-      if ("serviceWorker" in navigator) {
-        window.addEventListener("load", () => {
-          navigator.serviceWorker
-            .register("service-worker.js")
-            .then((registration) => console.log("Service Worker registered"))
-            .catch((error) =>
-              console.error("Service Worker registration failed:", error),
-            );
-        });
-      }
-    </script>
-
-    <style>
-      body {
-        font-family: Arial, sans-serif;
-        margin: 0;
-        padding: 20px;
-      }
-
-      .kanji-section {
-        margin-bottom: 20px;
-      }
-
-      .kanji-section h1 {
-        font-size: 24px;
-      }
-
-      .kanji-section ul {
-        list-style-type: none;
-        padding: 0;
-      }
-
-      .kanji-section li {
-        margin-bottom: 5px;
-      }
-    </style>
-  </head>
-
-  <body>
-    <a href="index.html">Go to the Study Page</a>
-    <div id="content"></div>
-
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        let studiedData = JSON.parse(localStorage.getItem("studiedData")) || {};
-        createStudiedContent(studiedData);
-      });
-
-      function createStudiedContent(studiedData) {
-        const content = document.getElementById("content");
-
-        Object.keys(studiedData).forEach((kanji) => {
-          const kanjiSection = document.createElement("div");
-          kanjiSection.classList.add("kanji-section");
-          kanjiSection.id = kanji;
-
-          const h1 = document.createElement("h1");
-          h1.textContent = kanji;
-          kanjiSection.appendChild(h1);
-
-          const ul = document.createElement("ul");
-
-          studiedData[kanji].forEach((word) => {
-            const li = document.createElement("li");
-            const checkbox = document.createElement("input");
-            checkbox.type = "checkbox";
-            checkbox.addEventListener("click", () =>
-              handleCheckboxClick(kanji, word),
-            );
-            li.appendChild(checkbox);
-            li.appendChild(document.createTextNode(` ${word}`));
-            ul.appendChild(li);
-          });
-
-          kanjiSection.appendChild(ul);
-          content.appendChild(kanjiSection);
-        });
-      }
-
-      function handleCheckboxClick(kanji, word) {
-        let studiedData = JSON.parse(localStorage.getItem("studiedData")) || {};
-
-        if (studiedData[kanji]) {
-          const index = studiedData[kanji].indexOf(word);
-          if (index !== -1) {
-            studiedData[kanji].splice(index, 1);
-            if (studiedData[kanji].length === 0) {
-              delete studiedData[kanji];
+        <script>
+            if ("serviceWorker" in navigator) {
+                window.addEventListener("load", () => {
+                    navigator.serviceWorker
+                        .register("service-worker.js")
+                        .then((registration) =>
+                            console.log("Service Worker registered"),
+                        )
+                        .catch((error) =>
+                            console.error(
+                                "Service Worker registration failed:",
+                                error,
+                            ),
+                        );
+                });
             }
-          }
-        }
+        </script>
 
-        localStorage.setItem("studiedData", JSON.stringify(studiedData));
-        location.reload();
-      }
-    </script>
-  </body>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                margin: 0;
+                padding: 20px;
+            }
+
+            .kanji-section {
+                margin-bottom: 20px;
+            }
+
+            .kanji-section h1 {
+                font-size: 24px;
+            }
+
+            .kanji-section ul {
+                list-style-type: none;
+                padding: 0;
+            }
+
+            .kanji-section li {
+                margin-bottom: 5px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <a href="index.html">Go to the Study Page</a>
+        <div id="content"></div>
+
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                let studiedData =
+                    JSON.parse(localStorage.getItem("studiedData")) || {};
+                createStudiedContent(studiedData);
+            });
+
+            function createStudiedContent(studiedData) {
+                const content = document.getElementById("content");
+
+                Object.keys(studiedData).forEach((kanji) => {
+                    const kanjiSection = document.createElement("div");
+                    kanjiSection.classList.add("kanji-section");
+                    kanjiSection.id = kanji;
+
+                    const h1 = document.createElement("h1");
+                    h1.textContent = kanji;
+                    kanjiSection.appendChild(h1);
+
+                    const ul = document.createElement("ul");
+
+                    studiedData[kanji].forEach((word) => {
+                        const li = document.createElement("li");
+                        const checkbox = document.createElement("input");
+                        checkbox.type = "checkbox";
+                        checkbox.addEventListener("click", () =>
+                            handleCheckboxClick(kanji, word),
+                        );
+                        li.appendChild(checkbox);
+                        li.appendChild(document.createTextNode(` ${word}`));
+                        ul.appendChild(li);
+                    });
+
+                    kanjiSection.appendChild(ul);
+                    content.appendChild(kanjiSection);
+                });
+            }
+
+            function handleCheckboxClick(kanji, word) {
+                let studiedData =
+                    JSON.parse(localStorage.getItem("studiedData")) || {};
+
+                if (studiedData[kanji]) {
+                    const index = studiedData[kanji].indexOf(word);
+                    if (index !== -1) {
+                        studiedData[kanji].splice(index, 1);
+                        if (studiedData[kanji].length === 0) {
+                            delete studiedData[kanji];
+                        }
+                    }
+                }
+
+                localStorage.setItem(
+                    "studiedData",
+                    JSON.stringify(studiedData),
+                );
+                location.reload();
+            }
+        </script>
+    </body>
 </html>
