@@ -1,4 +1,4 @@
-const VERSION = 1;
+const VERSION = 2;
 const CACHE_NAME = `rzs-v${VERSION}`;
 const urlsToCache = ["index.html", "studied.html", "script.js", "words.min.js"];
 
