@@ -42,9 +42,9 @@ document.addEventListener("DOMContentLoaded", function () {
             const tocEntry = document.createElement("div");
             tocEntry.innerHTML = `<a href="?k=${kanji}#${kanji}">${kanji}</a>`;
             tocEntry.onclick = () => {
-                document.getElementById('loader').classList.remove("hidden");
-                document.querySelector('main').classList.add("hidden");
-            }
+                document.getElementById("loader").classList.remove("hidden");
+                document.querySelector("main").classList.add("hidden");
+            };
             toc.appendChild(tocEntry);
         });
 
