@@ -55,7 +55,11 @@ document.addEventListener("DOMContentLoaded", function () {
         kanjiSection.id = kanji;
 
         const h1 = document.createElement("h1");
-        h1.textContent = kanji;
+        const link = document.createElement('a');
+        link.href = `https://www.kanshudo.com/kanji/${kanji}/`
+        link.textContent = `${kanji}`;
+        link.target = "_blank";
+        h1.appendChild(link);
         kanjiSection.appendChild(h1);
 
         const ul = document.createElement("ul");
@@ -70,7 +74,11 @@ document.addEventListener("DOMContentLoaded", function () {
                         handleCheckboxClick(kanji, word),
                     );
                     li.appendChild(checkbox);
-                    li.appendChild(document.createTextNode(` ${word}`));
+                    const link = document.createElement('a');
+                    link.href = `https://www.kanshudo.com/word/${word}/`
+                    link.textContent = `${word}`;
+                    link.target = "_blank";
+                    li.appendChild(link);
                     ul.appendChild(li);
                 }
             });

@@ -86,7 +86,11 @@
                     kanjiSection.id = kanji;
 
                     const h1 = document.createElement("h1");
-                    h1.textContent = kanji;
+                    const link = document.createElement('a');
+                    link.href = `https://www.kanshudo.com/kanji/${kanji}/`
+                    link.target = "_blank";
+                    link.textContent = `${kanji}`;
+                    h1.appendChild(link);
                     kanjiSection.appendChild(h1);
 
                     const ul = document.createElement("ul");
@@ -99,7 +103,11 @@
                             handleCheckboxClick(kanji, word),
                         );
                         li.appendChild(checkbox);
-                        li.appendChild(document.createTextNode(` ${word}`));
+                        const link = document.createElement('a');
+                        link.href = `https://www.kanshudo.com/word/${word}/`
+                        link.target = "_blank";
+                        link.textContent = `${word}`;
+                        li.appendChild(link);
                         ul.appendChild(li);
                     });
 
